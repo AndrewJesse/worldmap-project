@@ -12,15 +12,12 @@ export class GeoApiService {
 
   constructor(private http: HttpClient) { }
 
-  getCountryInfo(countryName: string): Observable<any> {
-    return this.http.get<any>(`${this.BASE_URL}searchJSON`, {
+  getCountryInfo(countryCode: string): Observable<any> {
+    return this.http.get<any>(`${this.BASE_URL}countryInfoJSON`, {
       params: {
-        name: countryName,
-        maxRows: '1',
+        country: countryCode,
         username: this.USERNAME
       }
     });
   }
-
-
 }

@@ -13,18 +13,26 @@ export class MapComponent {
   constructor(private geoApiService: GeoApiService) { } // Inject the service here
 
   onCountryHover(event: MouseEvent) {
+
     let countryElement = event.target as SVGPathElement;
     let countryId = countryElement.id || countryElement.getAttribute('class');
+
     if (countryId) {
-      this.fetchCountryData(countryId);
+      this.fetchCountryData(countryId, () => {
+        console.log(`Mouse hovered over country: ${countryId}`);
+      });
     }
   }
 
-  fetchCountryData(countryId: string) {
+  fetchCountryData(countryId: string, callback: () => void) {
     this.geoApiService.getCountryInfo(countryId).subscribe(data => {
+      //console.log('API Response:', data);
+      console.log('Raw API Response:', JSON.stringify(data));
       if (data.geonames && data.geonames.length > 0) {
         this.countryData = data.geonames[0];
+        callback();
       }
     });
   }
+
 }
