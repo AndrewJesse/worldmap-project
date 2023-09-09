@@ -20,4 +20,14 @@ export class GeoApiService {
       }
     });
   }
+  getCountryInfoByName(countryName: string): Observable<any> {
+    return this.http.get<any>(`${this.BASE_URL}searchJSON`, {
+      params: {
+        name: countryName,
+        maxRows: '1',
+        username: this.USERNAME
+      }
+    });
+  }
+
 }
