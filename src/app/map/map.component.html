@@ -974,3 +974,14 @@ THE SOFTWARE.
  <circle cx="1798.2" cy="719.3" id="2">
  </circle>
 </svg>
+<!-- Your SVG map goes here -->
+
+<!-- Country information from the API will be displayed here -->
+<div class="info-column">
+  <h2>Country Information</h2>
+  <p>Country Name: {{ countryData?.name || '...' }}</p>
+  <p>Capital: {{ countryData?.capital || '...' }}</p>
+  <!-- ... and so on for other fields -->
+</div>
+
+
