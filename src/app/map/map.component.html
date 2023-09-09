@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <!--
 *************Map created by Simplemaps.com********************
 *************Attribution is highly appreciated!***************
