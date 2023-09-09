@@ -15,7 +15,6 @@ export class MapComponent {
   onCountryHover(event: MouseEvent) {
     let countryElement = event.target as SVGPathElement;
     let countryId = countryElement.id || countryElement.getAttribute('class');
-
     if (countryId) {
       this.fetchCountryData(countryId);
     }
