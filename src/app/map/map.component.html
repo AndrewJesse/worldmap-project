@@ -1,3 +1,5 @@
+<div class="container">
+  <div class="map-column">
 <!--
 *************Map created by Simplemaps.com********************
 *************Attribution is highly appreciated!***************
@@ -974,16 +976,15 @@ THE SOFTWARE.
  <circle cx="1798.2" cy="719.3" id="2">
  </circle>
 </svg>
-
-<!-- Country information from the API will be displayed here -->
-<div class="info-column">
-  <h2>Country Information</h2>
-  <p>Country Name: {{ countryData?.countryName || '...' }}</p>
-  <p>Capital: {{ countryData?.capital || '...' }}</p>
-  <p>Population: {{ countryData?.population || '...' }}</p>
-  <p>Region: {{ countryData?.region || '...' }}</p>
-  <p>Income: {{ countryData?.income || '...' }}</p>
-  <p>Currency: {{ countryData?.currencyCode || '...' }}</p>
 </div>
 
-
+<div class="info-column">
+  <h2>Country Information</h2>
+  <p><strong>Country Name:</strong> {{ countryData?.countryName || '...' }}</p>
+  <p><strong>Capital:</strong> {{ countryData?.capital || '...' }}</p>
+  <p><strong>Population:</strong> {{ countryData?.population || '...' }}</p>
+  <p><strong>Region:</strong> {{ countryData?.region || '...' }}</p>
+  <p><strong>Income:</strong> {{ countryData?.income || '...' }}</p>
+  <p><strong>Currency:</strong> {{ countryData?.currencyCode || '...' }}</p>
+</div>
+</div>

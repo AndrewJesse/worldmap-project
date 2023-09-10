@@ -10,7 +10,7 @@ export class MapComponent {
 
   public countryData: any; // This will hold the data fetched from the API.
 
-  constructor(private geoApiService: GeoApiService) { } // Inject the service here
+  constructor(private geoApiService: GeoApiService) { } // Inject the service
 
   onCountryHover(event: MouseEvent) {
     let countryElement = event.target as SVGPathElement;
@@ -30,7 +30,7 @@ export class MapComponent {
       if (data.geonames && data.geonames.length > 0) {
         this.countryData = data.geonames[0];
         if (this.countryData.isoAlpha3) {
-          this.fetchIncomeLevelData(this.countryData.isoAlpha3);  // Use isoAlpha3 here
+          this.fetchIncomeLevelData(this.countryData.isoAlpha3);
         } else {
           console.error('No isoAlpha3 code found in GeoNames response.');
         }
