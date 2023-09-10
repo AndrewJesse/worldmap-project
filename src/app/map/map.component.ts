@@ -18,37 +18,44 @@ export class MapComponent {
     let countryName = countryElement.getAttribute('name') || countryElement.getAttribute('class');
 
     if (countryId) {
-      this.fetchCountryData(countryId, () => {
-        console.log(`Mouse hovered over country with ID: ${countryId}`);
-      });
+      this.fetchCountryData(countryId);
     } else if (countryName) {
-      this.fetchCountryDataByName(countryName, () => {
-        console.log(`Mouse hovered over country with Name: ${countryName}`);
-      });
+      this.fetchCountryDataByName(countryName);
     }
   }
 
-  fetchCountryDataByName(countryName: string, callback: () => void) {
-    this.geoApiService.getCountryInfoByName(countryName).subscribe(data => {
-      console.log('API Response by Name:', data);
+  fetchCountryData(countryId: string) {
+    this.geoApiService.getCountryInfo(countryId).subscribe(data => {
+      console.log('Raw API Response:', JSON.stringify(data));
       if (data.geonames && data.geonames.length > 0) {
-        const countryCode = data.geonames[0].countryCode;
-        if (countryCode) {
-          this.fetchCountryData(countryCode, callback);
+        this.countryData = data.geonames[0];
+        if (this.countryData.isoAlpha3) {
+          this.fetchIncomeLevelData(this.countryData.isoAlpha3);  // Use isoAlpha3 here
+        } else {
+          console.error('No isoAlpha3 code found in GeoNames response.');
         }
       }
     });
   }
 
-
-
-  fetchCountryData(countryId: string, callback: () => void) {
-    this.geoApiService.getCountryInfo(countryId).subscribe(data => {
-      //console.log('API Response:', data);
-      console.log('Raw API Response:', JSON.stringify(data));
+  fetchCountryDataByName(countryName: string) {
+    this.geoApiService.getCountryInfoByName(countryName).subscribe(data => {
+      console.log('API Response by Name:', data);
       if (data.geonames && data.geonames.length > 0) {
-        this.countryData = data.geonames[0];
-        callback();
+        const countryCode = data.geonames[0].countryCode;
+        if (countryCode) {
+          this.fetchCountryData(countryCode);
+        }
+      }
+    });
+  }
+
+  fetchIncomeLevelData(isoAlpha3: string) {
+    this.geoApiService.getIncomeLevelByCountry(isoAlpha3).subscribe(response => {
+      if (response && response[1] && response[1].length > 0) {
+        const worldBankData = response[1][0];
+        this.countryData.region = worldBankData.region?.value;
+        this.countryData.income = worldBankData.incomeLevel?.value;
       }
     });
   }

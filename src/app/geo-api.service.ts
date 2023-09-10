@@ -29,5 +29,8 @@ export class GeoApiService {
       }
     });
   }
+  getIncomeLevelByCountry(isoAlpha3: string): Observable<any> {
+    return this.http.get<any>(`http://api.worldbank.org/v2/country/${isoAlpha3}?format=json`);
 
+  }
 }
