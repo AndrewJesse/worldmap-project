@@ -30,13 +30,16 @@ export class MapComponent {
 
   fetchCountryDataByName(countryName: string, callback: () => void) {
     this.geoApiService.getCountryInfoByName(countryName).subscribe(data => {
-      console.log('API Response:', data);
+      console.log('API Response by Name:', data);
       if (data.geonames && data.geonames.length > 0) {
-        this.countryData = data.geonames[0];
-        callback();
+        const countryCode = data.geonames[0].countryCode;
+        if (countryCode) {
+          this.fetchCountryData(countryCode, callback);
+        }
       }
     });
   }
+
 
 
   fetchCountryData(countryId: string, callback: () => void) {
