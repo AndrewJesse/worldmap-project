@@ -9,7 +9,7 @@ export class GoldApiService {
 
   private apiUrl = 'https://www.goldapi.io/api/XAU/GBP';
   private headers = new HttpHeaders({
-    'x-access-token': 'goldapi-ahwnibrlmmi1byh-io',
+    'x-access-token': '**************',
     'Content-Type': 'application/json'
   });
 
