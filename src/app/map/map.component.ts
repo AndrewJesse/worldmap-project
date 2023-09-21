@@ -26,7 +26,7 @@ export class MapComponent {
 
   fetchCountryData(countryId: string) {
     this.geoApiService.getCountryInfo(countryId).subscribe(data => {
-      console.log('Raw API Response:', JSON.stringify(data));
+      //console.log('Raw API Response:', JSON.stringify(data));
       if (data.geonames && data.geonames.length > 0) {
         this.countryData = data.geonames[0];
         if (this.countryData.isoAlpha3) {
@@ -40,7 +40,7 @@ export class MapComponent {
 
   fetchCountryDataByName(countryName: string) {
     this.geoApiService.getCountryInfoByName(countryName).subscribe(data => {
-      console.log('API Response by Name:', data);
+      //console.log('API Response by Name:', data);
       if (data.geonames && data.geonames.length > 0) {
         const countryCode = data.geonames[0].countryCode;
         if (countryCode) {
