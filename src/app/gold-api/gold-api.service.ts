@@ -9,6 +9,7 @@ import { map, switchMap } from 'rxjs/operators';
 export class GoldApiService {
 
   private apiUrl = 'https://www.goldapi.io/api/XAU/USD';
+  private apiUrlSilver = 'https://www.goldapi.io/api/XAG/USD';
 
   constructor(private http: HttpClient) { }
 
@@ -26,6 +27,17 @@ export class GoldApiService {
           'Content-Type': 'application/json'
         });
         return this.http.get(this.apiUrl, { headers: headers });
+      })
+    );
+  }
+  fetchSilverData(): Observable<any> {
+    return this.fetchApiKey().pipe(
+      switchMap(apiKey => {
+        const headers = new HttpHeaders({
+          'x-access-token': apiKey,
+          'Content-Type': 'application/json'
+        });
+        return this.http.get(this.apiUrlSilver, { headers: headers });
       })
     );
   }

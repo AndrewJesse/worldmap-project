@@ -9,6 +9,7 @@ import { GoldApiService } from '../gold-api/gold-api.service';
 export class TickerComponent implements OnInit { // Implement the OnInit interface
 
   public goldData: any;
+  public silverData: any;
 
   constructor(private goldApiService: GoldApiService) { }
 
@@ -21,9 +22,19 @@ export class TickerComponent implements OnInit { // Implement the OnInit interfa
       error => console.log('error', error)
     );
   }
+  fetchSilverData() {
+    this.goldApiService.fetchSilverData().subscribe(
+      data => {
+        console.log('Silver API Data:', data);
+        this.silverData = data;
+      },
+      error => console.log('error', error)
+    );
+  }
 
   ngOnInit() {  // Define the ngOnInit method
     this.fetchGoldData();
+    this.fetchSilverData();
   }
 }
 
