@@ -1,6 +1,8 @@
 <table>
   <tr>
-    <td><strong>Gold Spot Price: </strong>{{ goldData?.price || '...'}}</td>
-    <td><strong>Silver Spot Price: </strong>{{ silverData?.price || '...'}}</td>
+    <td><strong>Gold Spot Price: </strong>{{ goldData?.price | number:'1.2-2' || '...'}}</td>
+    <td><strong>Silver Spot Price: </strong>{{ silverData?.price | number:'1.2-2' || '...'}}</td>
+    <td><strong></strong>{{ (silverData?.price  - silverData?.prev_close_price) | number:'1.2-2' || '...'}}
+      {{ (((silverData?.price  - silverData?.prev_close_price) / silverData?.prev_close_price) * 100) | number:'1.2-2' || '...'}}%</td>
   </tr>
 </table>
