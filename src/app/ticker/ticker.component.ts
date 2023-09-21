@@ -36,5 +36,20 @@ export class TickerComponent implements OnInit { // Implement the OnInit interfa
     this.fetchGoldData();
     this.fetchSilverData();
   }
+  isNegative(value: number): boolean {
+    return value < 0;
+  }
+
+  isPositive(value: number): boolean {
+    return value > 0;
+  }
+
+  isEqual(value: number): boolean {
+    return value === 0;
+  }
+
+  calculatePercentChange(current: number, previous: number): number {
+    return ((current - previous) / previous) * 100;
+  }
 }
 
