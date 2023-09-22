@@ -1,21 +1,21 @@
-<table>
+<table class="prices-table">
   <tr>
-    <td><strong>Gold Spot Price: </strong>{{ goldData?.price | number:'1.2-2' || '...'}}</td>
+    <td><strong>Gold Spot Price:</strong> ${{ goldData?.price | number:'1.2-2' || '...'}}</td>
     <td
     [class.negative]="isNegative(calculatePercentChange(goldData?.price, goldData?.prev_close_price))"
     [class.positive]="isPositive(calculatePercentChange(goldData?.price, goldData?.prev_close_price))"
     [class.neutral]="isEqual(calculatePercentChange(goldData?.price, goldData?.prev_close_price))">
     ${{ (goldData?.price  - goldData?.prev_close_price) | number:'1.2-2' || '...'}}
     {{ calculatePercentChange(goldData?.price, goldData?.prev_close_price) | number:'1.2-2' }}%
- </td>
-    <td><strong>Silver Spot Price: $</strong>{{ silverData?.price | number:'1.2-2' || '...'}}</td>
-      <td
-   [class.negative]="isNegative(calculatePercentChange(silverData?.price, silverData?.prev_close_price))"
-   [class.positive]="isPositive(calculatePercentChange(silverData?.price, silverData?.prev_close_price))"
-   [class.neutral]="isEqual(calculatePercentChange(silverData?.price, silverData?.prev_close_price))">
-   ${{ (silverData?.price  - silverData?.prev_close_price) | number:'1.2-2' || '...'}}
-   {{ calculatePercentChange(silverData?.price, silverData?.prev_close_price) | number:'1.2-2' }}%
-</td>
+    </td>
 
+    <td><strong>Silver Spot Price:</strong> ${{ silverData?.price | number:'1.2-2' || '...'}}</td>
+    <td
+    [class.negative]="isNegative(calculatePercentChange(silverData?.price, silverData?.prev_close_price))"
+    [class.positive]="isPositive(calculatePercentChange(silverData?.price, silverData?.prev_close_price))"
+    [class.neutral]="isEqual(calculatePercentChange(silverData?.price, silverData?.prev_close_price))">
+    ${{ (silverData?.price  - silverData?.prev_close_price) | number:'1.2-2' || '...'}}
+    {{ calculatePercentChange(silverData?.price, silverData?.prev_close_price) | number:'1.2-2' }}%
+    </td>
   </tr>
 </table>

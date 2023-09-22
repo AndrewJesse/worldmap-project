@@ -1,11 +1,34 @@
+.prices-table {
+  width: 70%;
+  /* Adjust the width as per your need */
+  margin: 0 auto;
+  /* Center the table if required */
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+.prices-table td {
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  text-align: left;
+}
+
+/* Keep the existing styles for Positive, Negative, Neutral. */
+/* ... */
+
+
+/* Classes for the price changes */
 .negative {
   color: red;
+  /* Red color for negative values */
 }
 
 .positive {
   color: green;
+  /* Green color for positive values */
 }
 
 .neutral {
-  color: white;
+  color: #808080;
+  /* Gray color for no change values */
 }
